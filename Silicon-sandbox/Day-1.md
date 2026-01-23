@@ -13,5 +13,5 @@
           -Modelsim  
           -Verilog  
             
-* Will upload the codes in Github once Verilog classes starts!  
-* **ALL THE BEST!**
+Will upload the codes in Github once Verilog classes starts!  
+**ALL THE BEST!**

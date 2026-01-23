@@ -1,5 +1,5 @@
 # Introductory class (19-01-2026)
-1st Three months: 
+1st Three months: \n
           -Digital Electronics
           -Verilog HDL
           -SOC architectures

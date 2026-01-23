@@ -1,4 +1,4 @@
-# Introductory classes on how we go through the courses (19-01-2026)
+# Introductory class (19-01-2026)
 1st Three months: 
           -Digital Electronics
           -Verilog HDL

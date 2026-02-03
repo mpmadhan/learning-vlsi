@@ -3,7 +3,7 @@ module mux_4to1_tb;
   reg S0,S1,D0,D1,D2,D3;
   wire Y;
 
-  mux_4to1(.SO(S0),.S1(S1),.D0(D0),.D1(D1),.D2(D2),.D3(D3),.Y(Y));
+  mux_4to1 D1(.SO(S0),.S1(S1),.D0(D0),.D1(D1),.D2(D2),.D3(D3),.Y(Y));
   initial begin
     //set data inputs
     D0=0;D1=1;D2=0;D3=1;

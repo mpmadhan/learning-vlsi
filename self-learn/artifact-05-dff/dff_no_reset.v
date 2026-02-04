@@ -1,5 +1,4 @@
-//D-flipflop
-//without Reset
+//D-flipflop without Reset
 module dff(
   input clk
   input D,

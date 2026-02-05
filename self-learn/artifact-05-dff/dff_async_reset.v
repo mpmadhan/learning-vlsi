@@ -1,6 +1,8 @@
 //D-flipflop with Asynchronous reset
 module dff_async_reset(
-  input clk,reset,D,
+  input clk,
+  input reset,
+  input D,
   output reg Q
 );
 

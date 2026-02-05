@@ -1,6 +1,6 @@
 //D-flipflop without Reset
 module dff(
-  input clk
+  input clk,
   input D,
   output reg Q
 );

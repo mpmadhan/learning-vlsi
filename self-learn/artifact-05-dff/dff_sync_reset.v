@@ -1,6 +1,8 @@
 //D-Flipflop with Syncronous Reset
 module dff_sync_reset(
-  input clk,D,reset,
+  input clk,
+  input D,
+  input reset,
   output reg Q //reg used since Q is used inside always block
 );
   always @(posedge clk) begin

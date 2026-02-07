@@ -1,56 +1,40 @@
-# Full Adder using Dataflow modeling
+# D-flipflop with No Reset
 ```verilog
-`timescale 1ns / 1ps
-
-module Full_Adder_DF(
-    input A,B,Cin,
-    output Sum,Carry
-    );
-    assign Sum = A^B^Cin;
-    assign Carry = (A&B) | Cin & (A^B);
+module dff_no_reset(
+    input clk,d,
+    output q
+);
+    always @(posedge clk) begin
+        q<=d;
+    end
 endmodule
 ```
 
 # truthtable
 
-| Inputs |   |     | Outputs |              |
-|--------|---|-----|---------|--------------|
-| A      | B | Cin | S (Sum) | Cout (Carry) |
-| 0      | 0 | 0   | 0       | 0            |
-| 0      | 0 | 1   | 1       | 0            |
-| 0      | 1 | 0   | 1       | 0            |
-| 0      | 1 | 1   | 0       | 1            |
-| 1      | 0 | 0   | 1       | 0            |
-| 1      | 0 | 1   | 0       | 1            |
-| 1      | 1 | 0   | 0       | 1            |
-| 1      | 1 | 1   | 1       | 1            |
+| Inputs |   |Outputs |
+|--------|---|--------|
+|  clk   | d |   q    |
+|   0    | 0 | q-prev |
+|   0    | 1 | q-prev |
+|   1    | 0 |   0    |
+|   1    | 1 |   1    |
 
 
-# Full adder Testbench (dataflow model)
+# D-flipflop with No Reset Testbench (dataflow model)
 
 ```verilog
-`timescale 1ns / 1ps
+module dff_no_reset_tb();
 
-module full_adder_tb;
+reg clk,d;
+wire q;
 
-reg A_tb,B_tb,Cin_tb;
-wire Sum_tb,Carry_tb;
-
-Full_Adder_DF dut (.A(A_tb), .B(B_tb), .Cin(Cin_tb), .Sum(Sum_tb), .Carry(Carry_tb) );
+dff_no_reset dut (.clk(clk),.d(d),.q(q));
 
 initial begin
-
-A_tb = 1'b0; B_tb = 1'b0; Cin_tb = 1'b0;
-#10 A_tb = 1'b0; B_tb = 1'b0; Cin_tb = 1'b1;
-#10 A_tb = 1'b0; B_tb = 1'b1; Cin_tb = 1'b0;
-#10 A_tb = 1'b0; B_tb = 1'b1; Cin_tb = 1'b1;
-#10 A_tb = 1'b1; B_tb = 1'b0; Cin_tb = 1'b0;
-#10 A_tb = 1'b1; B_tb = 1'b0; Cin_tb = 1'b1;
-#10 A_tb = 1'b1; B_tb = 1'b1; Cin_tb = 1'b0;
-#10 A_tb = 1'b1; B_tb = 1'b1; Cin_tb = 1'b1;
-#10 $stop;
+    clk=0;
+    forever #5 clk=~clk;
 end
-
 endmodule
 
 ```

@@ -10,6 +10,6 @@ module down_counter(
     if(reset)
       count<=0;
     else if(enable)
-      count<=count-1'b1;
+      count<=count-4'b0001;
   end
 endmodule

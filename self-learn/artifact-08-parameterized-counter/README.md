@@ -7,6 +7,7 @@
   
 ## Truth Table
 Parameterized Up-Down Counter (Only Rising clk edges)  
+WIDTH: Can be customized in TB.
 
 |  Rst  |  En  |  Dir  |    Count    |
 |-------|------|-------|-------------|

@@ -9,7 +9,7 @@ module up_down_counter(
 
   always @(posedge clk) begin
     if(reset)
-      count<=4'b000;
+      count<=4'b0000;
     else if(enable) begin
       if(up_down)              //if up_down=1, counter increments value when enable=1,reset=0
         count<=count+4'b0001;

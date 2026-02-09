@@ -8,7 +8,7 @@ module up_down_counter_tb();
   reg up_down;
   wire [3:0] count;
   //2. DUT instantiation
-  up_down_counter dut(.clk(clk),.reset(reset),.enable(enable),.up_down(up_down));
+  up_down_counter dut(.clk(clk),.reset(reset),.enable(enable),.up_down(up_down),.count(count));
   //3. Clock generation
   initial begin
     clk=0;
@@ -22,12 +22,12 @@ module up_down_counter_tb();
     enable=0;
     up_down=1;
 
-    #13 reset=0;
-    #10 enable=1;
-    #20 up_down=0;
-    #10 enable=0;
-    #10 enable=1;
-    repeat(16) @(posedge clk);
+    #13 reset=0;    //t=13 reset removed at t=15
+    #10 enable=1;   //up counter starts at t=25
+    #20 up_down=0;  //down counter starts at t=45
+    #10 enable=0;   //counter hold the value at t=55
+    #10 enable=1;   //down counter resumes at t=65
+    repeat(16) @(posedge clk);  //repeat for 16 cycles
     #20 $finish;
   end
   //5. Observation

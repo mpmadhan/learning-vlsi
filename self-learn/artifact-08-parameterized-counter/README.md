@@ -7,7 +7,7 @@
   
 ## Truth Table
 Parameterized Up-Down Counter (Only Rising clk edges)  
-=> WIDTH can be configurable(parameter) in testbench.
+> WIDTH can be configurable(parameter) in testbench.
 
 |  Rst  |  En  |  Dir  |    Count    |
 |-------|------|-------|-------------|

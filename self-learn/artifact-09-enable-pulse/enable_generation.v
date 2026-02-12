@@ -3,7 +3,7 @@ Basic Theory: Creating enable with the help of count,
 Count is a counter that counts the number of posedges,
 Once the amount of posedges(mentioned in PULSE_WIDTH) is completed enable signal is 1 for 1 clock cycle. */
 
-module enable_clock #(parameter PULSE_WIDTH = 5)(
+module enable_generation #(parameter PULSE_WIDTH = 5)(
   input clk,
   input reset,
   output reg en_pulse

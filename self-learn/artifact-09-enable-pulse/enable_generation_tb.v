@@ -8,7 +8,7 @@ module enable_generation_tb();
   wire [$clog2(PULSE_WIDTH)-1:0] count;
   wire en_pulse;
   //2. DUT Instantiation
-  enable_generation #(.PULSE_WIDTH(PULSE_WIDTH)) dut(.clk(clk),.reset(reset),.count(count),.en_pulse(en_pulse));
+  enable_generation #(.PULSE_WIDTH(PULSE_WIDTH)) dut(.clk(clk),.reset(reset),.en_pulse(en_pulse));
   //3. Clk Generation
   initial begin
     clk = 0;

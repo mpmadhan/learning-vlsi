@@ -26,3 +26,4 @@ module enable_generation #(parameter PULSE_WIDTH = 5)(
       end
     end
   end
+endmodule

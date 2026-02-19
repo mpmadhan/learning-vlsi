@@ -1,64 +1,37 @@
-//RTL Code
-module traffic_signal_fsm(
-  //1. Ports
-  input clk,
-  input reset,
-  output reg red,
-  output reg green,
-  output reg yellow
-);
-  //2. State Encoding
-  localparam RED = 2'b00;
-  localparam GREEN = 2'b01;
-  localparam YELLOW = 2'b10;
+//TB for Traffic signal FSM
+`timescale 1ns/1ps
+module traffic_signal_fsm_tb();
+  //1. Signal declaration
+  reg clk;
+  reg reset;
+  wire red;
+  wire green;
+  wire yellow;
+  //2. DUT instantiation
+  traffic_signal_fsm dut(.clk(clk),.reset(reset),.red(red),.green(green),.yellow(yellow));
+  //3. Clock generation
+  initial begin
+    clk = 0;
+    forever #5 clk = ~clk;
+  end
+  //4. Stimulus
+  initial begin
+    $display ("Time | Rst | R G Y");
+    reset = 1;
 
-  //3. State Registers (Sequential block)
-  reg[1:0] state, next_state;
+    #10 reset = 0;
+    repeat(12) @(posedge clk); //5+5+2 clock cycle to complete one full process
+    #43 reset = 1;    //applying reset in middle of the process
+    #10 reset = 0;
+    #100 $finish;
+  end
+  //5. Observation
   always @(posedge clk) begin
-    if(reset)
-      state <= RED;
-    else
-      state <= next_state;
+    $display ("%4t | %b | %b %b %b",$time,reset,red,green,yellow);
   end
-  //4. Count Block
-  reg[2:0] count;
-  reg counter_reset;
-  always @(posedge clk) begin
-    if(reset || counter_reset)
-      count <= 0;
-    else
-      count <= count+1;
-  end
-  //5. Next state logic (Combinational block)
-  always @(*) begin
-    next_state = state;
-    counter_reset = 0;
-    case(state)
-      RED: begin
-        if(count == 4) begin
-          next_state = GREEN;
-          counter_reset = 1;
-        end
-      end
-      GREEN: begin
-        if(count == 4) begin
-          next_state = YELLOW;
-          counter_reset = 1;
-        end
-      end
-      YELLOW: begin
-        if(count == 1) begin
-          next_state = RED;
-          counter_reset = 1;
-        end
-      end
-      default: next_state = RED;
-    endcase
-  end
-  //6. Output logic
-  always @(*) begin
-    red = (state == RED);
-    green = (state == GREEN);
-    yellow = (state == YELLOW);
+  //6. Waveform
+  initial begin
+    $dumpfile("traffic.vcd");
+    $dumpvars(0,traffic_signal_fsm_tb);
   end
 endmodule

@@ -20,3 +20,6 @@ once input din = 1 after S3, detected(output) = high.
 | S1 - 1        | din = 0   | S2 State    |
 | S2 - 10       | din = 1   | S3 State    |
 | S3 - 101      | din = 1   | detected = 1|
+
+## Simulation
+<img width="1836" height="258" alt="image" src="https://github.com/user-attachments/assets/b5e4b007-222a-4ee1-ba55-90a24011b385" />

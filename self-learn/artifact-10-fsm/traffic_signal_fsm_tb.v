@@ -17,6 +17,7 @@ module traffic_signal_fsm_tb();
   //4. Stimulus
   initial begin
     $display ("Time | Rst | R G Y");
+    $display ("-----|-----|------");
     reset = 1;
 
     #10 reset = 0;

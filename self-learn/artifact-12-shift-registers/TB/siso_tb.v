@@ -19,6 +19,7 @@ module siso_tb();
     $display ("Time | Rst Din Dout");
     $display ("-----|-------------");
     reset = 1;
+    din = 0;
     #10 reset = 0;
     #13 din = 1;
     #10 din = 0;
@@ -35,7 +36,7 @@ module siso_tb();
   end
   //6. Waveform
   initial begin
-    dumpfile("siso_tb.vcd");
-    dumpvars(0,siso_tb);
+    $dumpfile("siso_tb.vcd");
+    $dumpvars(0,siso_tb);
   end
 endmodule

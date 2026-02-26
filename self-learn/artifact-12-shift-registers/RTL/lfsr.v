@@ -8,13 +8,14 @@ module lfsr #(parameter WIDTH = 4)(
   output [(WIDTH-1):0] dout
 );
   reg [(WIDTH-1):0] shift_reg;
+  assign feedback = {(shift_reg[WIDTH-1])^(shift_reg[WIDTH-2])}
   always @(posedge clk) begin
     if(reset)
       shift_reg <= {{(WIDTH-1){1'b0}},{1'b1}};
     else if (load)
       shift_reg <= din;
     else if (enable)
-      shift_reg <= {(shift_reg[WIDTH-1]^shift_reg[WIDTH-2]),shift_reg[(WIDTH-1):1]};
+      shift_reg <= {feedback,shift_reg[(WIDTH-1):1]};
   end
   assign dout = shift_reg;
 endmodule

@@ -4,6 +4,7 @@ module universal_sr #(parameter WIDTH = 4)(
   input clk,
   input reset,
   input [1:0] sel,
+  input enable,
   input left_in,
   input right_in,
   input [(WIDTH-1):0] din,

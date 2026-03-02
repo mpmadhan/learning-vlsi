@@ -1,5 +1,5 @@
 TASK: Build a circuit that has one 3-bit input, then outputs the same vector, and also splits it into three separate 1-bit outputs. Connect output o0 to the input vector's position 0, o1 to position 1, etc.  
-<img width="1000" height="400" alt="image" src="https://github.com/user-attachments/assets/4c4aa7f0-4812-47b1-a6b0-5f7347ea8e05" />
+<img width="500" height="400" alt="image" src="https://github.com/user-attachments/assets/4c4aa7f0-4812-47b1-a6b0-5f7347ea8e05" />
 
 ```verilog
 module top_module ( 
